@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/miaosha?useSSL=true
+    username: root
+    password: nl1120
+
+#使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    hikari.driver-class-name: com.mysql.jdbc.Driver
+
