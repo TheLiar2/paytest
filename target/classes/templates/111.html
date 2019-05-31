@@ -1,0 +1,74 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=2,user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>冰卿妍经销商正品授权查询</title>
+
+    <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/js/jquery.js}" type="text/javascript"></script>
+<script language="javascript">
+    function getfocus() {
+        document.FrmSearch.UserName.focus();
+    }
+    function Search(){
+        if($("#UserName").val()==""){
+            alert('请输入要查询的微信号! \n\n');
+            $("#UserName").focus();
+            return false;
+        }else{
+            var value = $("#UserName").val();
+            console.log(value);
+            $.ajax({
+                url:"/wxuser/search",
+                type:"POST",
+                data:{
+                    "wxName":value,
+                },
+                dataType:"json",
+                success:function(res){
+                    var status = res.status;
+                    if(status=='fail'){
+                        alert("用户未授权，请前往授权");
+                        $("#UserName").val("");
+                        return false;
+                    }else{
+                        alert("用户已授权");
+                        return false;
+                    }
+                }
+            })
+        }
+    }
+
+</script>
+</head>
+
+<body>
+
+<div class="wrap">
+<div class="area">
+<form action="Searchm.asp" method="post" name="FrmSearch" target="_self" id="FrmSearch" onsubmit="return false">
+			<!-- select -->
+            <h2><img th:src="@{/images/tt_03.png}" alt=""></h2>
+				<div class="select">
+                    <select name="tmpType" id="tmpType" onchange="document.getElementById('temtip').innerHTML=options[selectedIndex].text;">
+					<option value="weixin">微信号</option>
+					</select>
+				</div>
+			<!-- select -->
+                        <input type="text" title="代理商" name="UserName" id="UserName">
+				<p>请输入经销商的<span id="temtip">微信号</span></p>
+                <input class="btn" type="submit" value="立即查询" onclick="Search()">
+</form>
+</div>
+</div>
+  <div class="wrap"> 
+   <div class="area6">
+    <div class="v1"><img th:src="@{/images/2wm.jpg}" class="img"></div>
+   </div>
+   </div>
+<div class="xian"></div>
+</body>
+</html>

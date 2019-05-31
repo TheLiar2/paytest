@@ -24,11 +24,11 @@ public class ValidatorImpl implements InitializingBean {
         if(constraintViolationSet.size()>0){
             //有错误
             result.setHasErrors(true);
-            constraintViolationSet.forEach(constraintViolation->{
-                String errMsg = constraintViolation.getMessage();
-                String propertyName = constraintViolation.getPropertyPath().toString();
-                result.getErrorMsgMap().put(propertyName,errMsg);
-            });
+//            constraintViolationSet.forEach(constraintViolation->{
+//                String errMsg = constraintViolation.getMessage();
+//                String propertyName = constraintViolation.getPropertyPath().toString();
+//                result.getErrorMsgMap().put(propertyName,errMsg);
+//            });
         }
         return result;
     }

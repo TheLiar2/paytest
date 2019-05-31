@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.btba.service.Impl.UserServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 12.977 s <<< FAILURE! - in com.btba.service.Impl.UserServiceImplTest
+getUserById(com.btba.service.Impl.UserServiceImplTest)  Time elapsed: 0.755 s  <<< ERROR!
+org.springframework.jdbc.BadSqlGrammarException: 
+
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'authorize.user_info' doesn't exist
+### The error may exist in file [F:\JetBrains\IDEA Workspace\common\target\classes\mapping\UserDOMapper.xml]
+### The error may involve com.btba.dao.UserDOMapper.selectByPrimaryKey-Inline
+### The error occurred while setting parameters
+### SQL: select                 id, name, gender, age, telephone, register_mode, third_party_id         from user_info     where id = ?
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'authorize.user_info' doesn't exist
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'authorize.user_info' doesn't exist
+	at com.btba.service.Impl.UserServiceImplTest.getUserById(UserServiceImplTest.java:28)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'authorize.user_info' doesn't exist
+	at com.btba.service.Impl.UserServiceImplTest.getUserById(UserServiceImplTest.java:28)
+

@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.100.219.213:3306/authorize?autoReconnect=true&failOverReadOnly=false
+#    url: jdbc:mysql://127.0.0.1:3306/authorize?autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: nl1120
+
+#使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    hikari.driver-class-name: com.mysql.jdbc.Driver
+  thymeleaf:
+    prefix: classpath:/templates/
+
+#  微信扫码登录
+appid: wxd2d08d6a2789c61d
+appsecret: 61dcc99112b00d020beabd547b459c7f
+scope: snsapi_login
+#domain: http://test.xcx.cxylt.cn/   填写网页审核的回调域  因为网页未审核，所以测试失败
+domain: 127.0.0.1:8080/wxuser/back
+
+#  微信扫码支付
+pay:
+  wxpay:
+    appId: wxd2d08d6a2789c61d
+    appSecret: 61dcc99112b00d020beabd547b459c7f
+    mchId: 1489415622
+    mchSecret: SHOUXICHUANGFUZ1489415622M031720
+    SPBILL_CREATE_IP: 127.0.0.1
+    NOTIFY_URL: http://9c92e1ab.ngrok.io/wxpay/notify
+    TRADE_TYPE: NATIVE
+    PLACEANORDER_URL: https://api.mch.weixin.qq.com/pay/unifiedorder
